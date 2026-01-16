@@ -2,11 +2,11 @@
 
 ## 1. Purpose
 
-A primary goal of OpenEMR is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
+A primary goal of EMR is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible. As such, we are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, ability, ethnicity, socioeconomic status, and religion (or lack thereof).
 
 This code of conduct outlines our expectations for all those who participate in our community, as well as the consequences for unacceptable behavior.
 
-We invite all those who participate in OpenEMR to help us create safe and positive experiences for everyone.
+We invite all those who participate in EMR to help us create safe and positive experiences for everyone.
 
 ## 2. Open Source Citizenship
 
@@ -53,7 +53,7 @@ If a community member engages in unacceptable behavior, the community organizers
 
 ## 6. Reporting Guidelines
 
-If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. This can be done by sending a direct message to "admins" on the community forums found at https://community.open-emr.org/.
+If you are subject to or witness unacceptable behavior, or have any other concerns, please notify a community organizer as soon as possible. This can be done by sending a direct message to "admins" on the community forums.
 
 
 
@@ -61,7 +61,7 @@ Additionally, community organizers are available to help community members engag
 
 ## 7. Addressing Grievances
 
-If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify OpenEMR with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies.
+If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify EMR with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies.
 
 
 

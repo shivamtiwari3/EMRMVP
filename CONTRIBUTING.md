@@ -1,10 +1,10 @@
-Thank you for your contribution. OpenEMR (and global healthcare) continues to get better because of people like you!
+Thank you for your contribution. EMR (and global healthcare) continues to get better because of people like you!
 
-The maintainers of OpenEMR want to get your pull request in as seamlessly as possible, so please ensure your code is consistent with our [development policies](https://open-emr.org/wiki/index.php/Development_Policies).
+The maintainers of EMR want to get your pull request in as seamlessly as possible, so please ensure your code is consistent with our development policies.
 
 ## Commit Messages
 
-OpenEMR uses [Conventional Commits](https://www.conventionalcommits.org/) for all commits merged to `master` and `rel-*` branches. Your PR title must follow this format:
+EMR uses [Conventional Commits](https://www.conventionalcommits.org/) for all commits merged to `master` and `rel-*` branches. Your PR title must follow this format:
 
 ```
 <type>(<scope>): <description>
@@ -85,52 +85,49 @@ These provide higher memory limits than Docker devtools and are what CI runs.
 
 ## Code Contributions (local development)
 
-You will need a "local" version of OpenEMR to make changes to the source code. The easiest way to do this is with [Docker](https://hub.docker.com/r/openemr/openemr/):
+You will need a "local" version of EMR to make changes to the source code. The easiest way to do this is with [Docker](https://hub.docker.com/r/your-org/emr/):
 
 ---
 
-### Starting with OpenEMR Development Docker Environment
-- For the highly recommended free course "You Can Be a OpenEMR Developer in 5 Easy Steps", click below:
-
-    [You Can Be a OpenEMR Developer in 5 Easy Steps](https://www.open-emr.org/blog/you-can-be-a-openemr-developer-in-5-easy-steps/)
+### Starting with EMR Development Docker Environment
+- For development tutorials and guides, see the project documentation.
 
 - For the Video Tutorial, click below:
 
     [![Getting Started Video Tutorial](Documentation/images/easy-dev-intro.png)](https://youtu.be/D4tXP5G9-sY)
 
-    - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+    - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
-1. [Create your own fork of OpenEMR](https://github.com/openemr/openemr/fork) (you will need a GitHub account) and `git clone` it to your local machine.
+1. [Create your own fork of EMR](https://github.com/your-org/emr/fork) (you will need a GitHub account) and `git clone` it to your local machine.
 
     - For the Video Tutorial, click below:
 
       [![Getting Started Video Tutorial](Documentation/images/easy-dev-git.png)](https://youtu.be/QhTlWMqPV1Q)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
     - If you haven't already, [install git](https://git-scm.com/downloads) for your system
-	- (optional) If you want to set up the base services(e.g. git, docker, docker compose, openemr-cmd, minkube and kubectl) easily, please try [openemr-env-installer](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-env-installer)
+	- (optional) If you want to set up the base services(e.g. git, docker, docker compose, emr-cmd, minkube and kubectl) easily, please try [emr-env-installer](https://github.com/emr/emr-devops/tree/master/utilities/emr-env-installer)
     - (optional) It's best to also add an `upstream` origin to keep your local fork up to date. [Check out this guide](https://oneemptymind.wordpress.com/2018/07/11/keeping-a-fork-up-to-date/) for more info.
-2. `cd openemr/docker/development-easy`
+2. `cd emr/docker/development-easy`
     - If you haven't already, [install Docker](https://docs.docker.com/install/) and [install compose](https://docs.docker.com/compose/install/) for your system
-    - (recommended) [Install openemr-cmd](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-cmd) for shorthand commands that work from any directory. Examples: `openemr-cmd ut` (unit-test), `openemr-cmd at` (api-test), `openemr-cmd et` (e2e-test), `openemr-cmd php-log`. Use `openemr-cmd-h` to search available commands.
-    - (optional) If you want to monitor and easily manage the docker environment, please also [install openemr-monitor](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-monitor) and [install portainer](https://github.com/openemr/openemr-devops/tree/master/utilities/portainer) for your system
-    - (optional) If you want to migrate the running docker environment, please try [openemr-env-migrator](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-env-migrator)
-    - (optional) If you want to set up with orchestration tool, please try [OpenEMR Kubernetes Orchestrations](https://github.com/openemr/openemr-devops/tree/master/kubernetes/minikube)
+    - (recommended) Install emr-cmd for shorthand commands that work from any directory. Examples: `emr-cmd ut` (unit-test), `emr-cmd at` (api-test), `emr-cmd et` (e2e-test), `emr-cmd php-log`. Use `emr-cmd-h` to search available commands.
+    - (optional) If you want to monitor and easily manage the docker environment, please also install monitoring and portainer utilities for your system
+    - (optional) If you want to migrate the running docker environment, please try the environment migrator utilities
+    - (optional) If you want to set up with orchestration tool, please try Kubernetes orchestration utilities
 3. Run `docker compose up` from your command line
     - When the build is done, you'll see the following message:
     ```sh
-    openemr_1  | Love OpenEMR? You can now support the project via the open collective:
-    openemr_1  |  > https://opencollective.com/openemr/donate
-    openemr_1  |
-    openemr_1  | Starting cron daemon!
-    openemr_1  | Starting apache!
+    emr_1  | EMR development environment is ready!
+    emr_1  |
+    emr_1  | Starting cron daemon!
+    emr_1  | Starting apache!
     ```
 4. Navigate to `http://localhost:8300/` or `https://localhost:9300/` to login as `admin`. Password is `pass`.
 5. If you wish to connect to the sql database, this docker environment provides the following 2 options:
     - Navigate to `http://localhost:8310/` where you can login into phpMyAdmin.
     - Or you can directly connect to port 8320 via your favorite sql tool (Mysql Workbench etc.).
-    - Use `username/user`: openemr, `password`: openemr .
+    - Use `username/user`: emr, `password`: emr .
 6. Make changes to any files on your local file system. Most changes will appear after a refresh of the page or iFrame you're working on.
 
     - For the Video Tutorials, click below:
@@ -139,11 +136,11 @@ You will need a "local" version of OpenEMR to make changes to the source code. T
 
       [![Getting Started Video Tutorial](Documentation/images/easy-dev-advanced-vscode-xdebug.png)](https://youtu.be/0dEYDHWECMI)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above videos and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above videos and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
     - An exception to this is if making changes to styling scripts in interface/themes/. In that case will need to clear web browser cache and run the following command to rebuild the theme files:
       ```sh
-      docker compose exec openemr /root/devtools build-themes
+      docker compose exec emr /root/devtools build-themes
       ```
 7. When you're done, it's best to clean up after yourself with `docker compose down -v`
     - If you don't want to build from scratch every time, just use `docker compose down` so your next `docker compose up` will use the cached volumes.
@@ -153,7 +150,7 @@ You will need a "local" version of OpenEMR to make changes to the source code. T
     docker compose pull
     ```
 
-9. [Submit a PR](https://github.com/openemr/openemr/compare) from your fork into `openemr/openemr#master`!
+9. [Submit a PR](https://github.com/your-org/emr/compare) from your fork into `your-org/emr#master`!
 
 ### After You Submit
 
@@ -179,11 +176,11 @@ We look forward to your contribution...
 
 ---
 
-### Advanced Use of OpenEMR Development Docker Environment
+### Advanced Use of EMR Development Docker Environment
 
-The OpenEMR development docker environment has a very rich advanced feature set. See below Index for links to all the cool advanced stuff:
+The EMR development docker environment has a very rich advanced feature set. See below Index for links to all the cool advanced stuff:
 
-**Index for Advanced Use of OpenEMR Development Docker Environment**
+**Index for Advanced Use of EMR Development Docker Environment**
 
 ---
 
@@ -193,8 +190,8 @@ The OpenEMR development docker environment has a very rich advanced feature set.
 4. [Php syntax checking, psr12 checking, and automated testing](#dev_tools_tests)
 5. [Run the entire dev tool suite](#dev_tools_suite)
 6. [Run only all the automated tests](#dev_tools_auto)
-7. [Resetting OpenEMR and loading demo data](#dev_tools_reset)
-8. [Backup and restore OpenEMR data](#dev_tools_backup)
+7. [Resetting EMR and loading demo data](#dev_tools_reset)
+8. [Backup and restore EMR data](#dev_tools_backup)
 9. [Send/receive snapshots](#dev_tools_send)
 10. [Create and add random patient data](#dev_tools_randompatients)
 11. [Add multisite bank](#dev_tools_bankmultisite)
@@ -215,302 +212,302 @@ The OpenEMR development docker environment has a very rich advanced feature set.
 
       [![Getting Started Video Tutorial](Documentation/images/easy-dev-vscode-xdebug.png)](https://youtu.be/XJl7SQGNhpw)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
      - Firefox/Chrome install xdebug helper add on and enable
     - PHPStorm Settings->Language & Frameworks->PHP->Debug
         - Start listening
         - Untoggle "Break at first line in PHP scripts"
         - Untoggle both settings that start with "Force Break at first line..."
-        - See [these images for more detail](https://github.com/openemr/openemr-devops/pull/283#issuecomment-779798156)
+        - See [these images for more detail](https://github.com/emr/emr-devops/pull/283#issuecomment-779798156)
     - VSCode and VSCodium
         - Listen for XDebug
-        - Use this `launch.json` [template](https://github.com/openemr/openemr-devops/issues/285#issuecomment-782899207)
+        - Use this `launch.json` [template](https://github.com/emr/emr-devops/issues/285#issuecomment-782899207)
     - Make sure port 9003 is open on your host operating system
     - Profiling output can be found in /tmp directory in the docker. Following will list the profiling output files:
       ```sh
-      docker compose exec openemr /root/devtools list-xdebug-profiles
+      docker compose exec emr /root/devtools list-xdebug-profiles
       ```
     - To check Xdebug log:
       ```sh
-      docker compose exec openemr /root/devtools xdebug-log
+      docker compose exec emr /root/devtools xdebug-log
       ```
 2. <a name="api"></a>API development and testing.
-    - Swagger is including in OpenEMR to ease API documentation, development, and testing.
-    - The following command will update the API documentation (derive documentation from [_rest_routes.inc.php](_rest_routes.inc.php) to [swagger/openemr-api.yaml](swagger/openemr-api.yaml)):
+    - Swagger is including in EMR to ease API documentation, development, and testing.
+    - The following command will update the API documentation (derive documentation from [_rest_routes.inc.php](_rest_routes.inc.php) to [swagger/emr-api.yaml](swagger/emr-api.yaml)):
       ```sh
-      docker compose exec openemr /root/devtools build-api-docs
+      docker compose exec emr /root/devtools build-api-docs
       ```
     - Can go to Swagger at [https://localhost:9300/swagger](https://localhost:9300/swagger) where it is super easy to test the API:
         - First, click on 'Authorize' button.
         - Then click 'Select All' scopes.
         - Can then do the following from command line to get a client id and secret, which then can copy/paste into the fields:
           ```sh
-          docker compose exec openemr /root/devtools register-oauth2-client
+          docker compose exec emr /root/devtools register-oauth2-client
           ```
         - Then click 'Authorize' button and follow the flow and before you know it, you will be authorized to test the api endpoints!
     - There is also a mechanism to allow use of the above Swagger tool with multisite.
         - Before going to the Swagger gui linked above, run the following command (after running below command, the Swagger gui will then be configured to work with the selected multisite):
           ```sh
-          docker compose exec openemr /root/devtools set-swagger-to-multisite <multisite-name>
+          docker compose exec emr /root/devtools set-swagger-to-multisite <multisite-name>
           ```
         - To collect a client id and secret for the selected multisite, can then do:
           ```sh
-          docker compose exec openemr /root/devtools register-oauth2-client <multisite-name>
+          docker compose exec emr /root/devtools register-oauth2-client <multisite-name>
           ```
         - When done testing with Swagger on the selected multisite, recommend setting swagger back to the default multisite to avoid changes to the swagger configuration script showing up in your local git repository:
           ```sh
-          docker compose exec openemr /root/devtools set-swagger-to-multisite
+          docker compose exec emr /root/devtools set-swagger-to-multisite
           ```
-    - There is also a dev tool to make it easy to test the API on the online OpenEMR demo farm. For example, what if you wanted to test the API at [https://eleven.openemr.io/a/openemr](https://eleven.openemr.io/a/openemr):
-        - Go to [https://eleven.openemr.io/a/openemr/swagger](https://eleven.openemr.io/a/openemr/swagger/index.html) and follow the Swagger gui flow above. The following command can be used to get a client id and secret from that online demo:
+    - There is also a dev tool to make it easy to test the API on demo instances. For example, what if you wanted to test the API at a demo URL:
+        - Go to the demo swagger interface and follow the Swagger gui flow above. The following command can be used to get a client id and secret from that online demo:
           ```sh
-          docker compose exec openemr /root/devtools register-oauth2-client-demo https://eleven.openemr.io/a/openemr
+          docker compose exec emr /root/devtools register-oauth2-client-demo https://your-demo-url.com
           ```
 3. <a name="other_php_versions"></a>Testing other PHP versions.
-    - The standard `flex` docker used in the easy development environments is PHP 8.4. This can be modified by changing the image (`image: openemr/openemr:flex`) used in the docker-compose.yml script. To use PHP 8.2, then just need to change it to `image: openemr/openemr:flex-3.22-php-8.2`. To use PHP 8.3 then change it to `image: openemr/openemr:flex-3.22-php-8.3`.
+    - The standard `flex` docker used in the easy development environments is PHP 8.4. This can be modified by changing the image (`image: your-org/emr:flex`) used in the docker-compose.yml script. To use PHP 8.2, then just need to change it to `image: your-org/emr:flex-3.22-php-8.2`. To use PHP 8.3 then change it to `image: your-org/emr:flex-3.22-php-8.3`.
 4. <a name="dev_tools_tests"></a>Php syntax checking, psr12 checking, and automated testing.
     - To check PHP error logs:
       ```sh
-      docker compose exec openemr /root/devtools php-log
+      docker compose exec emr /root/devtools php-log
       ```
     - To create a report of PSR12 code styling issues (this takes several minutes):
       ```sh
-      docker compose exec openemr /root/devtools psr12-report
+      docker compose exec emr /root/devtools psr12-report
       ```
     - To fix PSR12 code styling issues (this takes several minutes):
       ```sh
-      docker compose exec openemr /root/devtools psr12-fix
+      docker compose exec emr /root/devtools psr12-fix
       ```
     - To create a report of theme styling issues:
       ```sh
-      docker compose exec openemr /root/devtools lint-themes-report
+      docker compose exec emr /root/devtools lint-themes-report
       ```
     - To fix theme styling issues:
       ```sh
-      docker compose exec openemr /root/devtools lint-themes-fix
+      docker compose exec emr /root/devtools lint-themes-fix
       ```
     - To check PHP parsing errors (this takes several minutes):
       ```sh
-      docker compose exec openemr /root/devtools php-parserror
+      docker compose exec emr /root/devtools php-parserror
       ```
     - To dry run Rector changes:
       ```sh
-      docker compose exec openemr /root/devtools rector-dry-run
+      docker compose exec emr /root/devtools rector-dry-run
       ```
     - To process Rector changes:
       ```sh
-      docker compose exec openemr /root/devtools rector-process
+      docker compose exec emr /root/devtools rector-process
       ```
     - To run unit testing:
       ```sh
-      docker compose exec openemr /root/devtools unit-test
+      docker compose exec emr /root/devtools unit-test
       ```
     - To run api testing:
       ```sh
-      docker compose exec openemr /root/devtools api-test
+      docker compose exec emr /root/devtools api-test
       ```
     - To run e2e testing:
       ```sh
-      docker compose exec openemr /root/devtools e2e-test
+      docker compose exec emr /root/devtools e2e-test
       ```
-      - (You can actually view the e2e tests in real-time by going to [http://localhost:7900](http://localhost:7900) with password 'openemr123'.)
+      - (You can actually view the e2e tests in real-time by going to [http://localhost:7900](http://localhost:7900) with password 'emr123'.)
     - To run services testing:
       ```sh
-      docker compose exec openemr /root/devtools services-test
+      docker compose exec emr /root/devtools services-test
       ```
     - To run fixtures testing:
       ```sh
-      docker compose exec openemr /root/devtools fixtures-test
+      docker compose exec emr /root/devtools fixtures-test
       ```
     - To run validators testing:
       ```sh
-      docker compose exec openemr /root/devtools validators-test
+      docker compose exec emr /root/devtools validators-test
       ```
     - To run controllers testing:
       ```sh
-      docker compose exec openemr /root/devtools controllers-test
+      docker compose exec emr /root/devtools controllers-test
       ```
     - To run common testing:
       ```sh
-      docker compose exec openemr /root/devtools common-test
+      docker compose exec emr /root/devtools common-test
       ```
 5. <a name="dev_tools_suite"></a>Run the entire dev tool suite (PSR12 fix, lint themes fix, PHP parse error, unit/API/e2e/services/fixtures/validators/controllers/common tests) in one command, run
     ```sh
-    docker compose exec openemr /root/devtools clean-sweep
+    docker compose exec emr /root/devtools clean-sweep
     ```
 6. <a name="dev_tools_auto"></a>Run only all the automated tests (unit/API/e2e/services/fixtures/validators/controllers/common tests) in one command, run
     ```sh
-    docker compose exec openemr /root/devtools clean-sweep-tests
+    docker compose exec emr /root/devtools clean-sweep-tests
     ```
-7. <a name="dev_tools_reset"></a>Resetting OpenEMR and loading demo data.
+7. <a name="dev_tools_reset"></a>Resetting EMR and loading demo data.
     - For the Video Tutorial, click below:
 
       [![Resetting and Demo Data Video Tutorial](Documentation/images/easy-dev-reset.png)](https://youtu.be/1ch84Ffmky8)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
-    - To reset OpenEMR only (then can reinstall manually via setup.php in web browser):
+    - To reset EMR only (then can reinstall manually via setup.php in web browser):
       ```sh
-      docker compose exec openemr /root/devtools dev-reset
+      docker compose exec emr /root/devtools dev-reset
       ```
         - When running setup.php, need to use `mysql` for 'Server Host', `root` for 'Root Password', and `%` for 'User Hostname'.
-    - To reset and reinstall OpenEMR:
+    - To reset and reinstall EMR:
       ```sh
-      docker compose exec openemr /root/devtools dev-reset-install
+      docker compose exec emr /root/devtools dev-reset-install
       ```
-    - To reset and reinstall OpenEMR with demo data (this includes several users with access controls setup in addition to patient portal logins. [See HERE for those credentials](https://www.open-emr.org/wiki/index.php/Development_Demo#Demo_Credentials).):
+    - To reset and reinstall EMR with demo data (this includes several users with access controls setup in addition to patient portal logins):
       ```sh
-      docker compose exec openemr /root/devtools dev-reset-install-demodata
+      docker compose exec emr /root/devtools dev-reset-install-demodata
       ```
         - hint: this is also a great way to test any changes a developer has made to the sql upgrade stuff (ie. such as sql/5_0_2-to-6_0_0_upgrade.sql)
-8. <a name="dev_tools_backup"></a>Backup and restore OpenEMR data (database and data on drive) via snapshots.
+8. <a name="dev_tools_backup"></a>Backup and restore EMR data (database and data on drive) via snapshots.
     - For the Video Tutorial, click below:
 
       [![Snapshots and Capsules Video Tutorial](Documentation/images/easy-dev-snapshots-capsules.png)](https://youtu.be/n569Lw5I5us)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
      - Create a backup snapshot (using `example` below, but can use any alphanumeric identifier):
       ```sh
-      docker compose exec openemr /root/devtools backup example
+      docker compose exec emr /root/devtools backup example
       ```
     - Restore from a snapshot (using `example` below, but can use any alphanumeric identifier)
       ```sh
-      docker compose exec openemr /root/devtools restore example
+      docker compose exec emr /root/devtools restore example
       ```
     - To list the snapshots
       ```sh
-      docker compose exec openemr /root/devtools list-snapshots
+      docker compose exec emr /root/devtools list-snapshots
       ```
 9. <a name="dev_tools_send"></a>Send/receive snapshots (via capsules) that are created above in item 8.
     - For the Video Tutorial, click below:
 
       [![Snapshots and Capsules Video Tutorial](Documentation/images/easy-dev-snapshots-capsules.png)](https://youtu.be/n569Lw5I5us)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
     - Here is how to grab a capsule from the docker, which can then store or share with friends.
         - List the capsules:
           ```sh
-          docker compose exec openemr /root/devtools list-capsules
+          docker compose exec emr /root/devtools list-capsules
           ```
         - Copy the capsule from the docker to your current directory (using `example.tgz` below):
           ```sh
-          docker compose cp openemr:/snapshots/example.tgz .
+          docker compose cp emr:/snapshots/example.tgz .
           ```
     - Here is how to send a capsule into the docker.
         - Copy the capsule from current directory into the docker (using `example.tgz` below):
           ```sh
-          docker compose cp example.tgz openemr:/snapshots/
+          docker compose cp example.tgz emr:/snapshots/
           ```
         - Restore from the new shiny snapshot (using `example` below):
           ```sh
-          docker compose exec openemr /root/devtools restore example
+          docker compose exec emr /root/devtools restore example
           ```
-        - Ensure run upgrade to ensure will work with current version OpenEMR:
+        - Ensure run upgrade to ensure will work with current version EMR:
           ```sh
-          docker compose exec openemr /root/devtools upgrade 5.0.2
+          docker compose exec emr /root/devtools upgrade 5.0.2
           ```
-10. <a name="dev_tools_randompatients"></a>Create and add random patient data. This will use synthea to create random patients that are then imported into OpenEMR. You can choose the number of patients. Note that each patient will take several seconds.
+10. <a name="dev_tools_randompatients"></a>Create and add random patient data. This will use synthea to create random patients that are then imported into EMR. You can choose the number of patients. Note that each patient will take several seconds.
     - For the Video Tutorial, click below:
 
       [![Creating Random Patients Video Tutorial](Documentation/images/easy-dev-random-pat.png)](https://youtu.be/cFBFXFm_Psg)
 
-      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [OpenEMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
+      - (Recommend using Ubuntu Desktop 22.04 for above video and other videos in the [EMR Easy Docker Development Environment Video Series](https://www.youtube.com/playlist?list=PLFiWG_dDadgQT7zjqvEqbXm1OiuubOVO8). Easiest way to do this is setting up a [Ubuntu Desktop 22.04 Virtual Machine on VirtualBox](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox), which recommend configuring with 40GB hard drive, assigning 25% of computer memory, and assigning 25% of cpu cores to the virtual machine.)
 
     - Create and add 100 random patients (defaults to development mode set to true, which is set be default to true; development mode will markedly improve performance by bypassing the import of the ccda document and bypassing the use of the audit_master and audit_details tables and will directly import the new patient data from the ccda. Note this should never be done on sites that already contain real data/use, and it will also turn off the audit log during the import.):
        ```sh
-       docker compose exec openemr /root/devtools import-random-patients 100
+       docker compose exec emr /root/devtools import-random-patients 100
        ```
        or
        ```sh
-       docker compose exec openemr /root/devtools import-random-patients 100 true
+       docker compose exec emr /root/devtools import-random-patients 100 true
        ```
     - Create and add 100 random patients (with development mode set to false)
        ```sh
-       docker compose exec openemr /root/devtools import-random-patients 100 false
+       docker compose exec emr /root/devtools import-random-patients 100 false
        ```
 11. <a name="dev_tools_bankmultisite"></a>Create a bank of multisites with selected number of multisites that are all labelled from run1..runx. It will clone from the default instance. This can be helpful for testing of multisites and other larger scale testing.
     - Create 5 multisites (will be run1, run2, run3, run4, run5):
       ```sh
-      docker compose exec openemr /root/devtools generate-multisite-bank 5
+      docker compose exec emr /root/devtools generate-multisite-bank 5
       ```
 12. <a name="dev_tools_multisite"></a>Turn on and turn off support for multisite feature (to allow setting up multisites in setup.php script).
     - Turn on support for multisite:
       ```sh
-      docker compose exec openemr /root/devtools enable-multisite
+      docker compose exec emr /root/devtools enable-multisite
       ```
     - Turn off support for multisite:
       ```sh
-      docker compose exec openemr /root/devtools disable-multisite
+      docker compose exec emr /root/devtools disable-multisite
       ```
 13. <a name="dev_tools_listmultisite"></a>The available multsites can be listed via following command:
     ```sh
-    docker compose exec openemr /root/devtools list-multisites
+    docker compose exec emr /root/devtools list-multisites
     ```
 14. <a name="dev_tools_charset"></a>Change the database character set and collation (character set is the encoding that is used to store data in the database; collation are a set of rules that the database uses to sort the stored data).
     - Best to demonstrate this devtool with examples.
-        - Set character set to utf8mb4 and collation to utf8mb4_general_ci (this is default for OpenEMR 6 and higher):
+        - Set character set to utf8mb4 and collation to utf8mb4_general_ci (this is default for EMR 6 and higher):
           ```sh
-          docker compose exec openemr /root/devtools change-encoding-collation utf8mb4 utf8mb4_general_ci
+          docker compose exec emr /root/devtools change-encoding-collation utf8mb4 utf8mb4_general_ci
           ```
         - Set character set to utf8mb4 and collation to utf8mb4_unicode_ci:
           ```sh
-          docker compose exec openemr /root/devtools change-encoding-collation utf8mb4 utf8mb4_unicode_ci
+          docker compose exec emr /root/devtools change-encoding-collation utf8mb4 utf8mb4_unicode_ci
           ```
         - Set character set to utf8mb4 and collation to utf8mb4_vietnamese_ci:
           ```sh
-          docker compose exec openemr /root/devtools change-encoding-collation utf8mb4 utf8mb4_vietnamese_ci
+          docker compose exec emr /root/devtools change-encoding-collation utf8mb4 utf8mb4_vietnamese_ci
           ```
-        - Set character set to utf8 and collation to utf8_general_ci (this is default for OpenEMR 5 and lower):
+        - Set character set to utf8 and collation to utf8_general_ci (this is default for EMR 5 and lower):
           ```sh
-          docker compose exec openemr /root/devtools change-encoding-collation utf8 utf8_general_ci
+          docker compose exec emr /root/devtools change-encoding-collation utf8 utf8_general_ci
           ```
 15. <a name="dev_tools_https"></a>Test ssl certificate (to test client based certificates and revert back to default self signed certificate) and force/unforce https.
-    - To test client based certificates, create a zip package of the certificate in OpenEMR at Administration->System->Certificates. Then can import this zip package (example `ssl.zip`) into the docker via:
+    - To test client based certificates, create a zip package of the certificate in EMR at Administration->System->Certificates. Then can import this zip package (example `ssl.zip`) into the docker via:
       ```sh
-      docker compose cp ssl.zip openemr:/certs/
+      docker compose cp ssl.zip emr:/certs/
       ```
     - To list the available certificate packages on docker:
       ```sh
-      docker compose exec openemr /root/devtools list-client-certs
+      docker compose exec emr /root/devtools list-client-certs
       ```
     - To install and configure a certificate package (example `ssl`):
       ```sh
-      docker compose exec openemr /root/devtools setup-client-cert ssl
+      docker compose exec emr /root/devtools setup-client-cert ssl
       ```
     - To revert back to selfsigned certicates (ie. revert the changes required for client based certificates):
       ```sh
-      docker compose exec openemr /root/devtools on-self-signed-cert
+      docker compose exec emr /root/devtools on-self-signed-cert
       ```
     - To force https in apache script via redirect:
       ```sh
-      docker compose exec openemr /root/devtools force-https
+      docker compose exec emr /root/devtools force-https
       ```
     - To revert the changes that forced https in apache script:
       ```sh
-      docker compose exec openemr /root/devtools un-force-https
+      docker compose exec emr /root/devtools un-force-https
       ```
 16. <a name="dev_tools_ssl"></a>Place/remove testing sql ssl certificate and testing sql ssl client key/cert.
     - Place the testing sql ssl CA cert:
       ```sh
-      docker compose exec openemr /root/devtools sql-ssl
+      docker compose exec emr /root/devtools sql-ssl
       ```
     - Remove the testing sql ssl CA cert:
       ```sh
-      docker compose exec openemr /root/devtools sql-ssl-off
+      docker compose exec emr /root/devtools sql-ssl-off
       ```
     - Place the testing sql ssl CA cert and testing sql ssl client key/cert:
       ```sh
-      docker compose exec openemr /root/devtools sql-ssl-client
+      docker compose exec emr /root/devtools sql-ssl-client
       ```
     - Remove the testing sql ssl CA cert and testing sql ssl client key/cert:
       ```sh
-      docker compose exec openemr /root/devtools sql-ssl-client-off
+      docker compose exec emr /root/devtools sql-ssl-client-off
       ```
 17. <a name="dev_tools_couchdb"></a>CouchDB integration.
-    - In OpenEMR, CouchDB is an option for the patients document storage. For this reason, a CouchDB docker is included in this OpenEMR docker development environment. You can visit the CouchDB GUI directly via http://localhost:5984/_utils/ or https://localhost:6984/_utils/ with username `admin` and password `password`. You can configure OpenEMR to use this CouchDB docker for patient document storage in OpenEMR at Administration->Globals->Documents:
+    - In EMR, CouchDB is an option for the patients document storage. For this reason, a CouchDB docker is included in this EMR docker development environment. You can visit the CouchDB GUI directly via http://localhost:5984/_utils/ or https://localhost:6984/_utils/ with username `admin` and password `password`. You can configure EMR to use this CouchDB docker for patient document storage in EMR at Administration->Globals->Documents:
         - Document Storage Method->CouchDB
     - After running the following devtools, 'dev-reset', 'dev-install', 'dev-reset-install', 'dev-reset-install-demodata', 'restore-snapshot', then need to restart the couchdb docker via the following command:
         ```sh
@@ -519,92 +516,92 @@ The OpenEMR development docker environment has a very rich advanced feature set.
     - Developer tools to place/remove testing couchdb ssl certificate and testing couchdb ssl client key/cert.
         - Place the testing couchdb ssl CA cert:
           ```sh
-          docker compose exec openemr /root/devtools couchdb-ssl
+          docker compose exec emr /root/devtools couchdb-ssl
           ```
         - Remove the testing couchdb ssl CA cert:
           ```sh
-          docker compose exec openemr /root/devtools couchdb-ssl-off
+          docker compose exec emr /root/devtools couchdb-ssl-off
           ```
         - Place the testing couchdb ssl CA cert and testing couchdb ssl client key/cert:
           ```sh
-          docker compose exec openemr /root/devtools couchdb-ssl-client
+          docker compose exec emr /root/devtools couchdb-ssl-client
           ```
         - Remove the testing couchdb ssl CA cert and testing couchdb ssl client key/cert:
           ```sh
-          docker compose exec openemr /root/devtools couchdb-ssl-client-off
+          docker compose exec emr /root/devtools couchdb-ssl-client-off
           ```
 18. <a name="dev_tools_ldap"></a>LDAP integration.
-    - In OpenEMR, LDAP is an option for authentication. If this is turned on, then this will be supported for the `admin` user, which will use the following password: `admin`
+    - In EMR, LDAP is an option for authentication. If this is turned on, then this will be supported for the `admin` user, which will use the following password: `admin`
     - Turn on LDAP:
       ```sh
-      docker compose exec openemr /root/devtools enable-ldap
+      docker compose exec emr /root/devtools enable-ldap
       ```
     - Turn off LDAP:
       ```sh
-      docker compose exec openemr /root/devtools disable-ldap
+      docker compose exec emr /root/devtools disable-ldap
       ```
     - Developer tools to place/remove testing ldap tls/ssl certificate and testing ldap tls/ssl client key/cert.
         - Place the testing ldap tls/ssl CA cert:
           ```sh
-          docker compose exec openemr /root/devtools ldap-ssl
+          docker compose exec emr /root/devtools ldap-ssl
           ```
         - Remove the testing ldap tls/ssl CA cert:
           ```sh
-          docker compose exec openemr /root/devtools ldap-ssl-off
+          docker compose exec emr /root/devtools ldap-ssl-off
           ```
         - Place the testing ldap tls/ssl CA cert and testing ldap tls/ssl client key/cert:
           ```sh
-          docker compose exec openemr /root/devtools ldap-ssl-client
+          docker compose exec emr /root/devtools ldap-ssl-client
           ```
         - Remove the testing ldap tls/ssl CA cert and testing ldap tls/ssl client key/cert:
           ```sh
-          docker compose exec openemr /root/devtools ldap-ssl-client-off
+          docker compose exec emr /root/devtools ldap-ssl-client-off
           ```
 19. <a name="dev_tools_webroot"></a>Test webroot value.
-    - The default setup of the docker development environments are with a blank webroot, however, it is a good idea to also test with a webroot setting. There is an option to set the webroot to openemr.
-    - Note this dev tool requires the use of the openemr-cmd script, which is discussed above and can find instructions to install and use openemr-cmd script at [install openemr-cmd](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-cmd).
+    - The default setup of the docker development environments are with a blank webroot, however, it is a good idea to also test with a webroot setting. There is an option to set the webroot to emr.
+    - Note this dev tool requires the use of the emr-cmd script, which is discussed above and can find instructions to install and use emr-cmd script at [install emr-cmd](https://github.com/emr/emr-devops/tree/master/utilities/emr-cmd).
     - Set webroot to blank:
       ```sh
-      openemr-cmd change-webroot-blank
+      emr-cmd change-webroot-blank
       ```
-    - Set webroot to `openemr`:
+    - Set webroot to `emr`:
       ```sh
-      openemr-cmd change-webroot-openemr
+      emr-cmd change-webroot-emr
       ```
 
 ### Non-docker Use
 
-If you do not want to use Docker, you can always install OpenEMR directly on your local environment. This will require installing additional dependencies for your operating system. For more info see [OpenEMR Development Versions](https://open-emr.org/wiki/index.php/OpenEMR_Installation_Guides#OpenEMR_Development_Versions) on the wiki.
+If you do not want to use Docker, you can always install EMR directly on your local environment. This will require installing additional dependencies for your operating system. For more info see [EMR Development Versions](https://your-domain.com/wiki/index.php/EMR_Installation_Guides#EMR_Development_Versions) on the wiki.
 
 ## Financial contributions
 
-We also welcome financial contributions in full transparency on our [open collective](https://opencollective.com/openemr).
+We also welcome financial contributions in full transparency on our [open collective](https://opencollective.com/emr).
 Anyone can file an expense. If the expense makes sense for the development of the community, it will be "merged" in the ledger of our open collective by the core contributors and the person who filed the expense will be reimbursed.
 
 ## Credits
 
 ### Contributors
 
-Thank you to all the people who have already contributed to openemr!
-<a href="https://github.com/openemr/openemr/graphs/contributors"><img src="https://opencollective.com/openemr/contributors.svg?width=890" /></a>
+Thank you to all the people who have already contributed to emr!
+<a href="https://github.com/emr/emr/graphs/contributors"><img src="https://opencollective.com/emr/contributors.svg?width=890" /></a>
 
 ### Backers
 
-Thank you to all our backers! [[Become a backer](https://opencollective.com/openemr#backer)]
+Thank you to all our backers! [[Become a backer](https://opencollective.com/emr#backer)]
 
-<a href="https://opencollective.com/openemr#backers" target="_blank"><img src="https://opencollective.com/openemr/backers.svg?width=890"></a>
+<a href="https://opencollective.com/emr#backers" target="_blank"><img src="https://opencollective.com/emr/backers.svg?width=890"></a>
 
 ### Sponsors
 
-Thank you to all our sponsors! (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/openemr#sponsor))
+Thank you to all our sponsors! (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/emr#sponsor))
 
-<a href="https://opencollective.com/openemr/sponsor/0/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/1/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/2/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/3/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/4/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/5/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/6/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/7/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/8/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/openemr/sponsor/9/website" target="_blank"><img src="https://opencollective.com/openemr/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/0/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/1/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/2/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/3/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/4/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/5/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/6/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/7/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/8/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/emr/sponsor/9/website" target="_blank"><img src="https://opencollective.com/emr/sponsor/9/avatar.svg"></a>

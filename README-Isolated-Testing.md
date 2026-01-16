@@ -4,12 +4,12 @@ This directory contains an isolated testing setup that allows you to run PHPUnit
 
 ## Problem
 
-The default OpenEMR test bootstrap loads `interface/globals.php`, which:
+The default EMR test bootstrap loads `interface/globals.php`, which:
 - Connects to the database through `library/sql.inc.php`
 - Loads configuration from `sqlconf.php`
-- Initializes various OpenEMR services and dependencies
+- Initializes various EMR services and dependencies
 
-This prevents running simple unit tests without a full OpenEMR environment.
+This prevents running simple unit tests without a full EMR environment.
 
 ## Solution
 

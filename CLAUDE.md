@@ -1,9 +1,9 @@
-# OpenEMR Development Guide
+# EMR Development Guide
 
 ## Project Structure
 
 ```
-/src/              - Modern PSR-4 code (OpenEMR\ namespace)
+/src/              - Modern PSR-4 code (EMR\ namespace)
 /library/          - Legacy procedural PHP code
 /interface/        - Web UI controllers and templates
 /templates/        - Smarty/Twig templates
@@ -43,20 +43,19 @@ Tests run inside Docker via devtools. Run from `docker/development-easy/`:
 
 ```bash
 # Run all tests
-docker compose exec openemr /root/devtools clean-sweep-tests
+docker compose exec emr /root/devtools clean-sweep-tests
 
 # Individual test suites
-docker compose exec openemr /root/devtools unit-test
-docker compose exec openemr /root/devtools api-test
-docker compose exec openemr /root/devtools e2e-test
-docker compose exec openemr /root/devtools services-test
+docker compose exec emr /root/devtools unit-test
+docker compose exec emr /root/devtools api-test
+docker compose exec emr /root/devtools e2e-test
+docker compose exec emr /root/devtools services-test
 
 # View PHP error log
-docker compose exec openemr /root/devtools php-log
+docker compose exec emr /root/devtools php-log
 ```
 
-**Tip:** Install [openemr-cmd](https://github.com/openemr/openemr-devops/tree/master/utilities/openemr-cmd)
-for shorter commands (e.g., `openemr-cmd ut` for unit tests) from any directory.
+**Tip:** Install emr-cmd for shorter commands (e.g., `emr-cmd ut` for unit tests) from any directory.
 
 ## Code Quality
 
@@ -91,7 +90,7 @@ npm run gulp-build   # Build only (no watch)
 - **Indentation:** 4 spaces
 - **Line endings:** LF (Unix)
 - **No strict_types:** Project doesn't use `declare(strict_types=1)`
-- **Namespaces:** PSR-4 with `OpenEMR\` prefix for `/src/`
+- **Namespaces:** PSR-4 with `EMR\` prefix for `/src/`
 - New code goes in `/src/`, legacy helpers in `/library/`
 
 ## Commit Messages
@@ -114,7 +113,7 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 New services should extend `BaseService`:
 
 ```php
-namespace OpenEMR\Services;
+namespace EMR\Services;
 
 class ExampleService extends BaseService
 {
@@ -135,11 +134,11 @@ When modifying PHP files, ensure proper docblock:
 /**
  * Brief description
  *
- * @package   OpenEMR
- * @link      https://www.open-emr.org
+ * @package   EMR
+ * @link      https://your-domain.com
  * @author    Your Name <your@email.com>
  * @copyright Copyright (c) YEAR Your Name or Organization
- * @license   https://github.com/openemr/openemr/blob/master/LICENSE GNU General Public License 3
+ * @license   https://github.com/your-org/emr/blob/master/LICENSE GNU General Public License 3
  */
 ```
 

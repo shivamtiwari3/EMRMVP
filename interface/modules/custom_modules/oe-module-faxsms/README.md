@@ -1,5 +1,5 @@
 # module-faxsms
-Fax and SMS feature for OpenEMR that currently supports Twilio SMS and etherFAX for faxing.
+Fax and SMS feature for EMR that currently supports Twilio SMS and etherFAX for faxing.
 ## Install Module
 
 - To turn on and setup vendor accounts goto the top menu Modules->Manage Modules then click Unregistered button to display all currently unregistered modules.
@@ -9,7 +9,7 @@ Fax and SMS feature for OpenEMR that currently supports Twilio SMS and etherFAX 
 - Select the appropriate vendors for SMS and/or Fax. Tick the Individual User Accounts if you want to have the vendor account(s) associated with the user that is setting up the account.
 - Once a vendor is selected an account credential setup button will display.
 - Click the Setup SMS/Fax Account button and input the appropriate account information received when setting up the vendor accounts.
-- Log out and log back in to OpenEMR.
+- Log out and log back in to EMR.
 
 - You will find the module in the menu under Modules.
 ### Tips

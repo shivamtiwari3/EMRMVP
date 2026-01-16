@@ -1,6 +1,6 @@
 # FHIR API
 
-Complete guide to OpenEMR's FHIR R4 API implementation.
+Complete guide to EMR's FHIR R4 API implementation.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -31,7 +31,7 @@ Complete guide to OpenEMR's FHIR R4 API implementation.
 
 ## Overview
 
-OpenEMR provides a comprehensive **FHIR R4** implementation compliant with:
+EMR provides a comprehensive **FHIR R4** implementation compliant with:
 - ✅ **FHIR R4 Specification** - HL7 FHIR Release 4
 - ✅ **US Core 8.0 Implementation Guide** - US healthcare requirements
 - ✅ **SMART on FHIR v2.2.0** - App launch and authorization
@@ -61,7 +61,7 @@ OpenEMR provides a comprehensive **FHIR R4** implementation compliant with:
 
 Navigate to: **Administration → Config → Connectors**
 
-Enable: **☑ Enable OpenEMR Standard FHIR REST API**
+Enable: **☑ Enable EMR Standard FHIR REST API**
 
 ### 2. Configure SSL/TLS
 
@@ -71,7 +71,7 @@ Set base URL: **Administration → Config → Connectors → Site Address (requi
 
 Example: `https://your-openemr.example.com` or `https://localhost:9300` for local testing.  If installed in a subdirectory, include it (e.g. `https://your-openemr.example.com/openemr`).
 
-Note that several curl examples are given in this guide.  If your OpenEMR instance is using a self-signed certificate you will need to pass -k to curl to disable certificate verification for testing purposes.
+Note that several curl examples are given in this guide.  If your EMR instance is using a self-signed certificate you will need to pass -k to curl to disable certificate verification for testing purposes.
 
 ### 3. Register API Client
 
@@ -133,7 +133,7 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/Patient' \
 See [Authentication Guide](AUTHENTICATION.md) for complete OAuth2 flows:
 - [Authorization Code Grant](AUTHENTICATION.md#authorization-code-grant) (Frontend apps with user interaction)
 - [Client Credentials Grant](AUTHENTICATION.md#client-credentials-grant) (Backend or Frontend services - client apps that can manage and sign assertions with asymmetric keys)
-- [EHR Launch Flow](AUTHENTICATION.md#ehr-launch-flow) (SMART apps launched from within OpenEMR)
+- [EHR Launch Flow](AUTHENTICATION.md#ehr-launch-flow) (SMART apps launched from within EMR)
 
 ### Token in Request Header
 ```http
@@ -184,11 +184,11 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/metadata' \
         "http://hl7.org/fhir/uv/bulkdata/CapabilityStatement/bulk-data"
     ],
     "software": {
-        "name": "OpenEMR",
+        "name": "EMR",
         "version": "7.0.4"
     },
     "implementation": {
-        "description": "OpenEMR FHIR API",
+        "description": "EMR FHIR API",
         "url": "https://localhost:9300/apis/default/fhir"
     },
     "fhirVersion": "4.0.1",
@@ -388,9 +388,9 @@ The capability statement reveals:
 
 ## Supported Resources
 
-OpenEMR supports **30 FHIR R4 resources** across all contexts (patient, user, system).
+EMR supports **30 FHIR R4 resources** across all contexts (patient, user, system).
 
-The resources that OpenEMR supports is documented via Swagger. You can see this documentation (and can test it) by going to the swagger directory in your OpenEMR installation. The FHIR API is documented there in the fhir section. Can also see (and test) this in the online demos at https://www.open-emr.org/wiki/index.php/Development_Demo#Daily_Build_Development_Demos (clicking on the API (Swagger) User Interface link for the demo will take you there).
+The resources that EMR supports is documented via Swagger. You can see this documentation (and can test it) by going to the swagger directory in your EMR installation. The FHIR API is documented there in the fhir section. Can also see (and test) this in the online demos at https://www.your-domain.com/wiki/index.php/Development_Demo#Daily_Build_Development_Demos (clicking on the API (Swagger) User Interface link for the demo will take you there).
 
 ### Administration Resources
 - Patient ([swagger](https://demo.openemr.io/openemr/swagger/#/fhir/get_fhir_Patient))
@@ -460,7 +460,7 @@ The resources that OpenEMR supports is documented via Swagger. You can see this 
 
 ## Bulk FHIR Exports
 
-OpenEMR implements the **[FHIR Bulk Data Export specification](https://hl7.org/fhir/uv/bulkdata/)** for large-scale data access.
+EMR implements the **[FHIR Bulk Data Export specification](https://hl7.org/fhir/uv/bulkdata/)** for large-scale data access.
 
 ### Overview
 
@@ -549,7 +549,7 @@ Includes all resources in the [Patient Compartment](https://www.hl7.org/fhir/com
 
 ### Group Export
 
-Export data for **a specific group** of patients.  In OpenEMR a Group is automatically created for every practitioner containing their assigned patients.  Patients are included based on their primary care provider
+Export data for **a specific group** of patients.  In EMR a Group is automatically created for every practitioner containing their assigned patients.  Patients are included based on their primary care provider
 
 #### Required Scopes
 ```
@@ -568,8 +568,8 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/Group/1/$export' \
 
 #### Group Definition
 
-OpenEMR automatically creates groups:
-- **By Practitioner:** Patients with practitioner as primary care provider as specified in the `patient_data.providerID` field in the OpenEMR system.
+EMR automatically creates groups:
+- **By Practitioner:** Patients with practitioner as primary care provider as specified in the `patient_data.providerID` field in the EMR system.
 - Group ID is the `uuid` column from the `uuid_mapping` table where the `resource_type` is `Group` and the `target_uuid` is the practitioner's ID converted to binary.
 
 **Example:** Group 5 contains all patients with Practitioner 5 as PCP.
@@ -877,14 +877,14 @@ GET /interface/modules/zend_modules/public/xsl/cda.xsl
 
 Place in same directory as CCD XML for browser rendering.
 
-**Option 2: Upload to OpenEMR**
+**Option 2: Upload to EMR**
 
 Upload XML to patient documents under "CCDA" category for human-readable view.
 
 ### Tutorial
 
 Complete tutorial with screenshots:
-https://github.com/openemr/openemr/issues/5284#issuecomment-1155678620
+https://github.com/your-org/emr/openemr/issues/5284#issuecomment-1155678620
 
 ## Error Handling
 
@@ -1042,13 +1042,13 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/Specimen?patient=123' \
 
 **Swagger UI:** Interactive API testing at `/swagger/`
 
-**Online Demos:** https://www.open-emr.org/wiki/index.php/Development_Demo
+**Online Demos:** https://www.your-domain.com/wiki/index.php/Development_Demo
 
 ## Backwards Compatibility
 
 The FHIR API is designed to maintain backwards compatibility for existing integrations. New resources and operations are added in a way that does not break existing functionality.
 
-US Core 3.1, 7.0, and 8.0 has profiles that in some resources conflict with each other.  If your specific OpenEMR implementation requires strict adherence to a specific US Core IG version, you can set the Maximum US Core IG version you support in the OpenEMR Admin->Config->Connectors->Maximum supported version for US Core FHIR Implementation Guide to be 3.1, 7.0, or 8.0.  This will ensure that the FHIR API only advertises and supports profiles up to that version.
+US Core 3.1, 7.0, and 8.0 has profiles that in some resources conflict with each other.  If your specific EMR implementation requires strict adherence to a specific US Core IG version, you can set the Maximum US Core IG version you support in the EMR Admin->Config->Connectors->Maximum supported version for US Core FHIR Implementation Guide to be 3.1, 7.0, or 8.0.  This will ensure that the FHIR API only advertises and supports profiles up to that version.
 
 ---
 
@@ -1059,21 +1059,21 @@ US Core 3.1, 7.0, and 8.0 has profiles that in some resources conflict with each
 - Check [Developer Guide](DEVELOPER_GUIDE.md) for advanced topics
 
 **Support:**
-- Community Forum: https://community.open-emr.org/
+- Community Forum: https://community.your-domain.com/
 - FHIR Specification: https://hl7.org/fhir/R4/
 - US Core 8.0 IG: https://hl7.org/fhir/us/core/STU8/
 
 **Swagger Documentation:**
 - Production: `https://your-openemr-install/swagger/`
-- Online Demo: https://www.open-emr.org/wiki/index.php/Development_Demo
+- Online Demo: https://www.your-domain.com/wiki/index.php/Development_Demo
 
 ---
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -1086,10 +1086,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/openemr/issues)
+- **Discuss:** [Community Forum](https://community.your-domain.com/)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/openemr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

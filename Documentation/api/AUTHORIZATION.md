@@ -1,6 +1,6 @@
 # Authorization & Scopes
 
-Complete guide to OpenEMR API scopes, permissions, and access control.
+Complete guide to EMR API scopes, permissions, and access control.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -27,7 +27,7 @@ Complete guide to OpenEMR API scopes, permissions, and access control.
 
 ## Overview
 
-OpenEMR implements **SMART on FHIR v2.2.0** scopes with granular permissions, allowing fine-grained control over API access. Scopes define:
+EMR implements **SMART on FHIR v2.2.0** scopes with granular permissions, allowing fine-grained control over API access. Scopes define:
 
 - **What data** can be accessed (resource types)
 - **What operations** can be performed (create, read, update, delete, search)
@@ -279,7 +279,7 @@ patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observatio
 
 ### V1 Scope Compatibility
 
-OpenEMR maintains **backward compatibility** with SMART on FHIR v1 scopes.
+EMR maintains **backward compatibility** with SMART on FHIR v1 scopes.
 
 #### V1 to V2 Mapping
 
@@ -517,7 +517,7 @@ system/DocumentReference.$docref
 
 ## Standard API Scopes (api:oemr)
 
-Access to OpenEMR REST API (`/api/` endpoints). Requires `api:oemr` base scope plus resource-specific scopes.
+Access to EMR REST API (`/api/` endpoints). Requires `api:oemr` base scope plus resource-specific scopes.
 
 ### User Context Scopes
 ```
@@ -562,7 +562,7 @@ patient/appointment.rs
 ```
 
 **Enable Patient Portal API:**
-Administration → Config → Connectors → "Enable OpenEMR Patient Portal REST API (EXPERIMENTAL)"
+Administration → Config → Connectors → "Enable EMR Patient Portal REST API (EXPERIMENTAL)"
 
 ## Special Scopes
 
@@ -1011,7 +1011,7 @@ patient/Condition.cud
 - Check [Developer Guide](DEVELOPER_GUIDE.md) for implementation details
 
 **Support:**
-- Community Forum: https://community.open-emr.org/
+- Community Forum: https://community.your-domain.com/
 - Scope Reference: https://hl7.org/fhir/smart-app-launch/scopes-and-launch-context.html
 
 
@@ -1019,9 +1019,9 @@ patient/Condition.cud
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -1034,10 +1034,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/openemr/issues)
+- **Discuss:** [Community Forum](https://community.your-domain.com/)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/openemr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

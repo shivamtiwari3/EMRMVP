@@ -1,6 +1,6 @@
 # Authentication
 
-Complete guide to authenticating with the OpenEMR API using OAuth 2.0 and OpenID Connect.
+Complete guide to authenticating with the EMR API using OAuth 2.0 and OpenID Connect.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -27,7 +27,7 @@ Complete guide to authenticating with the OpenEMR API using OAuth 2.0 and OpenID
 
 ## Overview
 
-OpenEMR uses **OAuth 2.0** with **OpenID Connect (OIDC)** for API authentication and authorization. This standards-based approach ensures secure access to patient data while maintaining interoperability with healthcare applications.
+EMR uses **OAuth 2.0** with **OpenID Connect (OIDC)** for API authentication and authorization. This standards-based approach ensures secure access to patient data while maintaining interoperability with healthcare applications.
 
 ### Key Features
 - ✅ OAuth 2.0 compliant authorization
@@ -54,12 +54,12 @@ https://localhost:9300/oauth2/default/
 ## Prerequisites
 
 ### 1. Enable APIs
-Enable the appropriate API services in OpenEMR:
+Enable the appropriate API services in EMR:
 
 **Administration → Config → Connectors**
-- ☑ Enable OpenEMR Standard REST API (for `/api/` endpoints)
-- ☑ Enable OpenEMR Standard FHIR REST API (for `/fhir/` endpoints)
-- ☑ Enable OpenEMR Patient Portal REST API (for `/portal/` endpoints) - *EXPERIMENTAL*
+- ☑ Enable EMR Standard REST API (for `/api/` endpoints)
+- ☑ Enable EMR Standard FHIR REST API (for `/fhir/` endpoints)
+- ☑ Enable EMR Patient Portal REST API (for `/portal/` endpoints) - *EXPERIMENTAL*
 
 ### 2. Configure SSL/TLS
 **SSL/TLS is required** for all OAuth2 operations.
@@ -220,19 +220,19 @@ See [Using Asymmetric Authentication](#using-asymmetric-authentication) for impl
 sequenceDiagram
     participant Client as Your App
     participant Browser as User's Browser
-    participant OpenEMR as OpenEMR Server
+    participant EMR as EMR Server
     participant User as User
 
     Client->>Browser: 1. Redirect to /authorize
-    Browser->>OpenEMR: 2. Authorization Request
-    OpenEMR->>User: 3. Login Prompt*
-    User->>OpenEMR: 4. Enter Credentials*
-    OpenEMR->>User: 5. Consent Screen
-    User->>OpenEMR: 6. Approve Scopes
-    OpenEMR->>Browser: 7. Redirect with Code
+    Browser->>EMR: 2. Authorization Request
+    EMR->>User: 3. Login Prompt*
+    User->>EMR: 4. Enter Credentials*
+    EMR->>User: 5. Consent Screen
+    User->>EMR: 6. Approve Scopes
+    EMR->>Browser: 7. Redirect with Code
     Browser->>Client: 8. Authorization Code
-    Client->>OpenEMR: 9. Exchange Code for Token
-    OpenEMR->>Client: 10. Access + Refresh Tokens
+    Client->>EMR: 9. Exchange Code for Token
+    EMR->>Client: 10. Access + Refresh Tokens
 ```
 \* Steps 3,4 are skipped in EHR Launch context if the `OAuth2 EHR-Launch Authorization Flow Skip Enable App Setting` is set to true
 #### Step 1: Authorization Request (GET)
@@ -268,14 +268,14 @@ https://localhost:9300/oauth2/default/authorize?response_type=code&client_id=Lnj
 
 #### Step 2: User Authentication & Consent
 
-OpenEMR will:
+EMR will:
 1. Prompt user to log in (if not already authenticated)
 2. Display consent screen showing requested scopes
 3. Ask user to approve or deny access to the scope resources.
 
 #### Step 3: Authorization Response
 
-After approval, OpenEMR redirects back to your `redirect_uri`:
+After approval, EMR redirects back to your `redirect_uri`:
 ```
 https://client.example.org/callback?
   code=def50200a8f...(authorization_code)&
@@ -396,7 +396,7 @@ EHR Launch allows apps to be launched with pre-established context (patient, enc
 #### Launch Sequence
 ```mermaid
 sequenceDiagram
-    participant EHR as OpenEMR
+    participant EHR as EMR
     participant App as SMART App
     participant User as User
 
@@ -413,7 +413,7 @@ sequenceDiagram
 \* Step 4 is skipped in EHR Launch context if the `OAuth2 EHR-Launch Authorization Flow Skip Enable App Setting` is set to true
 #### Step 1: EHR Initiates Launch
 
-OpenEMR redirects to your app's launch URL with a `launch` parameter:
+EMR redirects to your app's launch URL with a `launch` parameter:
 ```
 https://client.example.org/launch?
   iss=https://localhost:9300/apis/default/fhir&
@@ -635,7 +635,7 @@ curl -X POST -k \
 **Parameters:**
 - `grant_type`: Must be `password`
 - `user_role`: `users` or `patient`
-- `username`: OpenEMR username
+- `username`: EMR username
 - `password`: User's password
 - `email`: Required for patient role
 
@@ -846,7 +846,7 @@ function logout(idToken, redirectUri) {
 
 ### Discovery Endpoint
 
-OpenEMR provides OIDC discovery at:
+EMR provides OIDC discovery at:
 ```
 GET /oauth2/{site}/.well-known/openid-configuration
 ```
@@ -1103,9 +1103,9 @@ curl -X POST \
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -1118,10 +1118,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/openemr/issues)
+- **Discuss:** [Community Forum](https://community.your-domain.com/)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/openemr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

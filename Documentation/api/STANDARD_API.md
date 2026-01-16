@@ -1,6 +1,6 @@
-# Standard API (OpenEMR REST)
+# Standard API (EMR REST)
 
-Complete guide to OpenEMR's Standard REST API for native OpenEMR resources.
+Complete guide to EMR's Standard REST API for native EMR resources.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -17,10 +17,10 @@ Complete guide to OpenEMR's Standard REST API for native OpenEMR resources.
 
 ## Overview
 
-The **OpenEMR Standard REST API** provides access to OpenEMR's native data structures through RESTful endpoints. This API is designed for:
+The **EMR Standard REST API** provides access to EMR's native data structures through RESTful endpoints. This API is designed for:
 
-- ✅ **OpenEMR-specific operations** - Native data structures
-- ✅ **Custom integrations** - Direct access to OpenEMR tables
+- ✅ **EMR-specific operations** - Native data structures
+- ✅ **Custom integrations** - Direct access to EMR tables
 - ✅ **Administrative functions** - User management, facilities, etc.
 - ✅ **Legacy system integration** - Non-FHIR compatible systems
 
@@ -28,8 +28,8 @@ The **OpenEMR Standard REST API** provides access to OpenEMR's native data struc
 
 | Use Standard API When | Use FHIR API When |
 |----------------------|-------------------|
-| Need OpenEMR-specific data structures | Need healthcare interoperability |
-| Integrating with existing OpenEMR workflows | Building standards-compliant apps |
+| Need EMR-specific data structures | Need healthcare interoperability |
+| Integrating with existing EMR workflows | Building standards-compliant apps |
 | Require direct table access | Need vendor-neutral data model |
 | Administrative/operational tasks | Clinical data exchange |
 | Legacy system integration | SMART on FHIR apps required |
@@ -42,7 +42,7 @@ The **OpenEMR Standard REST API** provides access to OpenEMR's native data struc
 
 Navigate to: **Administration → Config → Connectors**
 
-Enable: **☑ Enable OpenEMR Standard REST API**
+Enable: **☑ Enable EMR Standard REST API**
 
 ### 2. Configure SSL/TLS
 
@@ -165,7 +165,7 @@ Accept: application/json
 ### Enable Portal API
 
 **Administration → Config → Connectors**
-- ☑ Enable OpenEMR Patient Portal REST API (EXPERIMENTAL)
+- ☑ Enable EMR Patient Portal REST API (EXPERIMENTAL)
 
 ### Base URL
 ```
@@ -465,14 +465,14 @@ Navigate to the **standard** section in Swagger UI.
 ### Online Demos
 
 Test against live demo instances:
-- **Demo Portal:** https://www.open-emr.org/wiki/index.php/Development_Demo
+- **Demo Portal:** https://www.your-domain.com/wiki/index.php/Development_Demo
 - **Click:** "API (Swagger) User Interface" link
 
 ### Configure Swagger OAuth
 
 Set your client's redirect URI to:
 ```
-<OpenEMR base URI>/swagger/oauth2-redirect.html
+<EMR base URI>/swagger/oauth2-redirect.html
 ```
 
 Example:
@@ -489,9 +489,9 @@ https://localhost:9300/swagger/oauth2-redirect.html
 - Check [Developer Guide](DEVELOPER_GUIDE.md) for advanced topics
 
 **Support:**
-- Community Forum: https://community.open-emr.org/
-- GitHub Issues: https://github.com/openemr/openemr/issues
-- API Development Thread: https://community.open-emr.org/t/v6-authorization-and-api-changes-afoot/15450
+- Community Forum: https://community.your-domain.com/
+- GitHub Issues: https://github.com/your-org/emr/openemr/issues
+- API Development Thread: https://community.your-domain.com/t/v6-authorization-and-api-changes-afoot/15450
 
 **Recommendation:**
 For new integrations, consider using the [FHIR API](FHIR_API.md) for better interoperability and standards compliance.
@@ -500,9 +500,9 @@ For new integrations, consider using the [FHIR API](FHIR_API.md) for better inte
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -515,10 +515,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/openemr/issues)
+- **Discuss:** [Community Forum](https://community.your-domain.com/)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/openemr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

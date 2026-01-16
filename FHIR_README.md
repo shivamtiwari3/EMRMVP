@@ -1,14 +1,14 @@
-# OpenEMR FHIR API Documentation
+# EMR FHIR API Documentation
 
 > **📚 Complete FHIR documentation has moved to [Documentation/api/FHIR_API.md](Documentation/api/FHIR_API.md)**
 
-OpenEMR provides a comprehensive **FHIR R4** implementation compliant with US Core 8.0 and SMART on FHIR v2.2.0.
+EMR provides a comprehensive **FHIR R4** implementation compliant with US Core 8.0 and SMART on FHIR v2.2.0.
 
 ## 🚀 Quick Start
 
 ### 1. Enable FHIR API
 **Administration → Config → Connectors**
-- ☑ Enable OpenEMR Standard FHIR REST API
+- ☑ Enable EMR Standard FHIR REST API
 
 ### 2. FHIR Base URL
 Replace `default` with your multi-site tenant if applicable see ([Multi-Tenancy Guide](Documentation/api/DEVELOPER_GUIDE.md#multisite-support)):
@@ -255,15 +255,15 @@ Returns DocumentReference with link to download CCD XML file.
 
 **[→ Complete $docref Guide](Documentation/api/FHIR_API.md#documentreference-docref-operation)**
 
-**[→ CCD Tutorial with Screenshots](https://github.com/openemr/openemr/issues/5284#issuecomment-1155678620)**
+**[→ CCD Tutorial with Screenshots](https://github.com/your-org/emr/issues)**
 
 ## ⚡ SMART on FHIR Integration
 
 ### Launch Types
 
-**EHR Launch** - App launched from within OpenEMR:
+**EHR Launch** - App launched from within EMR:
 ```
-1. User clicks app in OpenEMR
+1. User clicks app in EMR
 2. App receives launch token
 3. App requests authorization with launch token
 4. App receives patient + encounter context
@@ -338,8 +338,8 @@ curl https://localhost:9300/apis/default/fhir/.well-known/smart-configuration
 - **[Troubleshooting](Documentation/api/SMART_ON_FHIR.md#troubleshooting)** - Common issues
 
 ### Community
-- **[OpenEMR Forum](https://community.open-emr.org/)** - Ask questions
-- **[GitHub Issues](https://github.com/openemr/openemr/issues)** - Report bugs
+- **[EMR Forum](https://your-domain.com/forum)** - Ask questions
+- **[GitHub Issues](https://github.com/your-org/emr/issues)** - Report bugs
 
 ### Standards
 - **[FHIR R4 Spec](https://hl7.org/fhir/R4/)** - Official specification
@@ -426,9 +426,9 @@ curl https://localhost:9300/apis/default/fhir/.well-known/smart-configuration
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -441,10 +441,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/issues)
+- **Discuss:** [Community Forum](https://your-domain.com/forum)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

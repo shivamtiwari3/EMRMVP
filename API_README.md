@@ -1,8 +1,8 @@
-# OpenEMR REST API Documentation
+# EMR REST API Documentation
 
 > **📚 Complete documentation has moved to [Documentation/api/](Documentation/api/README.md)**
 
-This project provides comprehensive REST and FHIR APIs for OpenEMR, supporting:
+This project provides comprehensive REST and FHIR APIs for EMR, supporting:
 - **FHIR R4** - Full FHIR Release 4 implementation
 - **US Core 8.0** - US healthcare compliance
 - **SMART on FHIR v2.2.0** - Advanced app integration
@@ -13,8 +13,8 @@ This project provides comprehensive REST and FHIR APIs for OpenEMR, supporting:
 
 ### 1. Enable the API
 **Administration → Config → Connectors**
-- ☑ Enable OpenEMR Standard REST API
-- ☑ Enable OpenEMR Standard FHIR REST API
+- ☑ Enable EMR Standard REST API
+- ☑ Enable EMR Standard FHIR REST API
 
 ### 2. Configure SSL
 Set your base URL at:
@@ -45,7 +45,7 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/Patient' \
 - **[🔑 Authorization & Scopes](Documentation/api/AUTHORIZATION.md)** - Permissions and access control
 - **[🏥 FHIR API Reference](Documentation/api/FHIR_API.md)** - FHIR R4 endpoints and resources
 - **[⚡ SMART on FHIR](Documentation/api/SMART_ON_FHIR.md)** - App integration and launch flows
-- **[🛠️ Standard API Reference](Documentation/api/STANDARD_API.md)** - OpenEMR REST endpoints
+- **[🛠️ Standard API Reference](Documentation/api/STANDARD_API.md)** - EMR REST endpoints
 - **[👨‍💻 Developer Guide](Documentation/api/DEVELOPER_GUIDE.md)** - Internal usage and development
 
 ## 🎯 Common Tasks
@@ -106,7 +106,7 @@ https://localhost:9300/apis/default/fhir
 - `POST /fhir/DocumentReference/$docref` - Generate CCD
 - `GET /fhir/$export` - Bulk data export
 
-### Standard API (OpenEMR REST)
+### Standard API (EMR REST)
 ```
 https://localhost:9300/apis/default/api
 ```
@@ -147,23 +147,23 @@ https://localhost:9300/apis/default/portal
 ### Interactive Testing
 Test endpoints interactively with Swagger UI:
 ```
-https://your-openemr-install/swagger/
+https://your-emr-install/swagger/
 ```
 
 ### Online Demos
 Try the API on live demo instances:
-- **Demo URL:** https://www.open-emr.org/wiki/index.php/Development_Demo
+- **Demo URL:** https://your-domain.com/demo
 - **Click:** "API (Swagger) User Interface" link
 
 ### Configure Swagger OAuth
 When testing with Swagger, set your client's redirect URI to:
 ```
-<OpenEMR base URI>/swagger/oauth2-redirect.html
+<EMR base URI>/swagger/oauth2-redirect.html
 ```
 
 ## 🌐 Multisite Support
 
-OpenEMR supports multiple sites with site-specific endpoints:
+EMR supports multiple sites with site-specific endpoints:
 
 **Default site:**
 ```
@@ -219,9 +219,9 @@ system/Binary.read
 - **[FAQ & Troubleshooting](Documentation/api/SMART_ON_FHIR.md#troubleshooting)** - Common issues
 
 ### Community
-- **[Community Forum](https://community.open-emr.org/)** - Ask questions, share knowledge
-- **[Development Thread](https://community.open-emr.org/t/v6-authorization-and-api-changes-afoot/15450)** - API development discussion
-- **[GitHub Issues](https://github.com/openemr/openemr/issues)** - Report bugs, request features
+- **[Community Forum](https://your-domain.com/forum)** - Ask questions, share knowledge
+- **[Development Thread](https://your-domain.com/forum/development)** - API development discussion
+- **[GitHub Issues](https://github.com/your-org/emr/issues)** - Report bugs, request features
 
 ### Standards & Specifications
 - **[FHIR R4 Spec](https://hl7.org/fhir/R4/)** - HL7 FHIR specification
@@ -297,7 +297,7 @@ curl -X GET 'https://localhost:9300/apis/default/fhir/MedicationRequest?patient=
 ## 🏗️ For Developers
 
 ### Internal API Usage
-- **[Internal API Guide](Documentation/api/DEVELOPER_GUIDE.md#internal-api-usage)** - Using APIs from within OpenEMR
+- **[Internal API Guide](Documentation/api/DEVELOPER_GUIDE.md#internal-api-usage)** - Using APIs from within EMR
 - **[Example Code](tests/api/InternalApiTest.php)** - Internal API examples
 
 ### Extending the API
@@ -351,12 +351,12 @@ Response ← JSON Formatting ← Validation ← Processing
 
 ## 📜 License
 
-OpenEMR is licensed under [GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+EMR is licensed under [GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 API integrations must comply with:
 - HIPAA requirements
 - State/federal healthcare regulations
-- OpenEMR license terms
+- EMR license terms
 
 ## 🔗 Quick Links
 
@@ -373,9 +373,9 @@ API integrations must comply with:
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -388,10 +388,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/issues)
+- **Discuss:** [Community Forum](https://your-domain.com/forum)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3

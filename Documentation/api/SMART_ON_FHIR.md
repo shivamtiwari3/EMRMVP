@@ -1,6 +1,6 @@
 # SMART on FHIR
 
-Complete guide to integrating SMART on FHIR applications with OpenEMR.
+Complete guide to integrating SMART on FHIR applications with EMR.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -40,11 +40,11 @@ SMART on FHIR enables:
 - ✅ **Standardized authorization** with granular scopes
 - ✅ **User-friendly integration** without custom EHR modifications
 
-### OpenEMR Support
+### EMR Support
 
-OpenEMR fully supports:
+EMR fully supports:
 - **SMART on FHIR v2.2.0** - Latest specification
-- **EHR Launch** - Apps launched from within OpenEMR
+- **EHR Launch** - Apps launched from within EMR
 - **Standalone Launch** - Apps launched independently
 - **Native Apps** - Mobile and desktop applications
 - **Patient Standalone Apps** - Patient-facing applications
@@ -62,7 +62,7 @@ OpenEMR fully supports:
 
 ## SMART v2.2.0 Features
 
-OpenEMR implements **SMART on FHIR v2.2.0** with the following enhancements:
+EMR implements **SMART on FHIR v2.2.0** with the following enhancements:
 
 ### New Features
 
@@ -119,7 +119,7 @@ See [Authentication Guide](AUTHENTICATION.md#token-introspection) for details.
 
 ## App Registration
 
-SMART apps must be registered before use. OpenEMR provides two registration methods.
+SMART apps must be registered before use. EMR provides two registration methods.
 
 ### Web-Based Registration
 
@@ -255,17 +255,17 @@ SMART supports two launch patterns: **Standalone** and **EHR Launch**.
 sequenceDiagram
     participant User
     participant App as SMART App
-    participant OpenEMR
+    participant EMR
 
     User->>App: 1. Launch app
-    App->>OpenEMR: 2. Authorization request
-    OpenEMR->>User: 3. Login prompt
-    User->>OpenEMR: 4. Enter credentials
-    OpenEMR->>User: 5. Consent screen
-    User->>OpenEMR: 6. Approve access
-    OpenEMR->>App: 7. Authorization code
-    App->>OpenEMR: 8. Exchange for token
-    OpenEMR->>App: 9. Access token + context
+    App->>EMR: 2. Authorization request
+    EMR->>User: 3. Login prompt
+    User->>EMR: 4. Enter credentials
+    EMR->>User: 5. Consent screen
+    User->>EMR: 6. Approve access
+    EMR->>App: 7. Authorization code
+    App->>EMR: 8. Exchange for token
+    EMR->>App: 9. Access token + context
     App->>User: 10. Display data
 ```
 
@@ -311,7 +311,7 @@ window.location.href = authUrl.toString();
 
 **Step 2: Handle callback**
 
-After user approval, OpenEMR redirects to `redirect_uri`:
+After user approval, EMR redirects to `redirect_uri`:
 ```
 https://app.example.com/callback?code=AUTHORIZATION_CODE&state=STATE
 ```
@@ -339,10 +339,10 @@ const response = await fetch('https://localhost:9300/apis/default/fhir/Patient/1
 
 ### EHR Launch
 
-**EHR-initiated** - App launched from within OpenEMR with pre-established context.
+**EHR-initiated** - App launched from within EMR with pre-established context.
 
 #### Characteristics
-- ✅ Launched from OpenEMR UI
+- ✅ Launched from EMR UI
 - ✅ Patient context pre-selected
 - ✅ Encounter context available (SMART v2.2.0)
 - ✅ User already authenticated
@@ -353,18 +353,18 @@ const response = await fetch('https://localhost:9300/apis/default/fhir/Patient/1
 ```mermaid
 sequenceDiagram
     participant User as Clinician
-    participant OpenEMR
+    participant EMR
     participant App as SMART App
 
-    User->>OpenEMR: 1. View patient chart
-    User->>OpenEMR: 2. Click "Launch App"
-    OpenEMR->>App: 3. Redirect to launch URL (iss + launch)
-    App->>OpenEMR: 4. Authorization request (with launch)
-    OpenEMR->>User: 5. Consent screen (if needed)
-    User->>OpenEMR: 6. Approve
-    OpenEMR->>App: 7. Authorization code
-    App->>OpenEMR: 8. Exchange for token
-    OpenEMR->>App: 9. Token + patient + encounter
+    User->>EMR: 1. View patient chart
+    User->>EMR: 2. Click "Launch App"
+    EMR->>App: 3. Redirect to launch URL (iss + launch)
+    App->>EMR: 4. Authorization request (with launch)
+    EMR->>User: 5. Consent screen (if needed)
+    User->>EMR: 6. Approve
+    EMR->>App: 7. Authorization code
+    App->>EMR: 8. Exchange for token
+    EMR->>App: 9. Token + patient + encounter
     App->>User: 10. Display patient data
 ```
 
@@ -393,9 +393,9 @@ user/Observation.rs
 
 #### Implementation
 
-**Step 1: OpenEMR redirects to launch URL**
+**Step 1: EMR redirects to launch URL**
 
-OpenEMR initiates launch with:
+EMR initiates launch with:
 ```
 https://app.example.com/launch?
   iss=https://localhost:9300/apis/default/fhir&
@@ -479,7 +479,7 @@ if (encounterId) {
 }
 ```
 
-#### Enabling in OpenEMR
+#### Enabling in EMR
 
 **Step 1: Register app** (see [App Registration](#app-registration))
 
@@ -1184,7 +1184,7 @@ Native apps must follow [RFC 8252: OAuth 2.0 for Native Apps](https://tools.ietf
 
 ## App Management
 
-Administrators manage SMART apps through the OpenEMR interface.
+Administrators manage SMART apps through the EMR interface.
 
 ### Enabling Apps
 
@@ -1279,7 +1279,7 @@ See [Authorization Guide - Revoking Access](AUTHORIZATION.md#revoking-access) fo
 ✅ **Revoke suspicious apps** - Act on security incidents
 ✅ **Educate users** - About app permissions
 ✅ **Maintain audit logs** - Track API access
-✅ **Update OpenEMR** - Apply security patches
+✅ **Update EMR** - Apply security patches
 
 ❌ **Don't auto-approve system apps** - Review carefully
 ❌ **Don't ignore security alerts** - Investigate promptly
@@ -1419,20 +1419,20 @@ See [Authorization Guide - Revoking Access](AUTHORIZATION.md#revoking-access) fo
 **Resources:**
 - SMART App Launch IG: http://hl7.org/fhir/smart-app-launch/
 - SMART on FHIR: https://smarthealthit.org/
-- Community Forum: https://community.open-emr.org/
+- Community Forum: https://community.your-domain.com/
 - Example Apps: https://github.com/smart-on-fhir/
 
 **Support:**
-- Community Forum: https://community.open-emr.org/
-- GitHub Issues: https://github.com/openemr/openemr/issues
+- Community Forum: https://community.your-domain.com/
+- GitHub Issues: https://github.com/your-org/emr/openemr/issues
 
 ---
 ## Documentation Attribution
 
 ### Authorship
-This documentation represents the collective knowledge and contributions of the OpenEMR open-source community. The content is based on:
-- Original documentation by OpenEMR developers and contributors
-- Technical specifications from the OpenEMR codebase
+This documentation represents the collective knowledge and contributions of the EMR open-source community. The content is based on:
+- Original documentation by EMR developers and contributors
+- Technical specifications from the EMR codebase
 - Community feedback and real-world implementation experience
 
 ### AI Assistance
@@ -1445,10 +1445,10 @@ The organization, structure, and presentation of this documentation was enhanced
 All technical accuracy is maintained from the original community-authored documentation.
 
 ### Contributing
-OpenEMR is an open-source project. To contribute to this documentation:
-- **Report Issues:** [GitHub Issues](https://github.com/openemr/openemr/issues)
-- **Discuss:** [Community Forum](https://community.open-emr.org/)
-- **Submit Changes:** [Pull Requests](https://github.com/openemr/openemr/pulls)
+EMR is an open-source project. To contribute to this documentation:
+- **Report Issues:** [GitHub Issues](https://github.com/your-org/emr/openemr/issues)
+- **Discuss:** [Community Forum](https://community.your-domain.com/)
+- **Submit Changes:** [Pull Requests](https://github.com/your-org/emr/openemr/pulls)
 
 **Last Updated:** November 2025
 **License:** GPL v3
